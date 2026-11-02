@@ -1,0 +1,48 @@
+{
+  "name": "insurtech-partner-integration-sdk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Insurtech Partner Integration SDK Monorepo (Common DTOs, Mock API Server, and TypeScript SDK)",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky || (cd .. && husky \"AI Challenge 13 — Partner Integration SDK/.husky\") || true",
+    "build": "yarn --cwd packages/common build && yarn --cwd packages/mock-api build && yarn --cwd packages/sdk build",
+    "typecheck": "tsc -p tsconfig.json --noEmit && yarn --cwd packages/common typecheck && yarn --cwd packages/mock-api typecheck && yarn --cwd packages/sdk typecheck",
+    "lint": "eslint \"packages/*/src/**/*.ts\" \"packages/*/tests/**/*.ts\" \"examples/**/*.ts\"",
+    "lint:fix": "eslint --fix \"packages/*/src/**/*.ts\" \"packages/*/tests/**/*.ts\" \"examples/**/*.ts\"",
+    "format": "prettier --write \"packages/**/*.{ts,json}\" \"examples/**/*.ts\" \"*.{json,md}\"",
+    "format:check": "prettier --check \"packages/**/*.{ts,json}\" \"examples/**/*.ts\" \"*.{json,md}\"",
+    "lint-staged": "lint-staged",
+    "test": "yarn --cwd packages/sdk test",
+    "check": "yarn format:check && yarn lint && yarn typecheck && yarn test",
+    "start:mock": "yarn --cwd packages/mock-api start",
+    "example:1": "node examples/01-simple-claim.ts",
+    "example:2": "node examples/02-claim-with-document.ts",
+    "example:3": "node examples/03-status-polling.ts",
+    "examples": "yarn example:1 && yarn example:2 && yarn example:3"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

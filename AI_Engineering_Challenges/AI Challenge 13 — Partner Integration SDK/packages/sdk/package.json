@@ -1,0 +1,21 @@
+{
+  "name": "@insurtech/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript Partner Integration SDK for embedding insurance claim submission and tracking",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test tests/sdk.test.ts"
+  },
+  "dependencies": {
+    "@insurtech/common": "1.0.0"
+  },
+  "devDependencies": {
+    "@insurtech/mock-api": "1.0.0",
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
