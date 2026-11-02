@@ -3,3 +3,5 @@ dist/
 coverage/
 yarn.lock
 *.tsbuildinfo
+CONVERSATION_LOG.md
+conversation-transcript.jsonl
